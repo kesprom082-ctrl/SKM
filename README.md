@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <html lang="id">
 <head>
 <meta charset="utf-8"/>
@@ -12,8 +10,8 @@
 <div style="text-align:center;margin-bottom:20px">
 <img src="ChatGPT Image Mar 5, 2026, 08_57_39 AM.png" style="width:100%;max-height:260px;object-fit:cover;border-radius:12px;margin-bottom:10px"/>
 <div style="display:flex;justify-content:center;align-items:center;gap:15px;flex-wrap:wrap">
-<img src="https://iili.io/CCEYxLX.th.png" alt="CCEYxLX.th.png" border="0"></a>
-<img src="https://iili.io/CCE0UoN.th.png" alt="CCE0UoN.th.png" border="0"></a>
+<img src="https://iili.io/CCEYxLX.th.png" alt="CCEYxLX.th.png" border="0">
+<img src="https://iili.io/CCE0UoN.th.png" alt="CCE0UoN.th.png" border="0">
 </div>
 </div>
 
