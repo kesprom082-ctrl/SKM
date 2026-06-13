@@ -1,56 +1,151 @@
+<!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SKM</title>
+<meta charset="utf-8">
+
+<!-- ANDROID APP META -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#16a34a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<title>SKM RSUD Naibonat</title>
+
 <script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+html,body{
+ height:100%;
+ margin:0;
+ background:#f3f4f6;
+}
+.app{
+ display:flex;
+ flex-direction:column;
+ height:100%;
+}
+header{
+ background:#16a34a;
+ color:white;
+ padding:14px;
+ text-align:center;
+ font-weight:700;
+ font-size:18px;
+}
+main{
+ flex:1;
+ overflow:auto;
+ padding:16px;
+}
+input,select,textarea,button{
+ font-size:16px;
+}
+button{
+ padding:14px !important;
+ border-radius:12px !important;
+}
+.card{
+ background:white;
+ border-radius:16px;
+ padding:16px;
+ box-shadow:0 6px 16px rgba(0,0,0,.08);
+}
+</style>
 </head>
-<body class="bg-gray-100 p-6">
-<div class="max-w-4xl mx-auto bg-white rounded-xl shadow p-6">
-<div style="text-align:center;margin-bottom:20px">
-<img src="ChatGPT Image Mar 5, 2026, 08_57_39 AM.png" style="width:100%;max-height:260px;object-fit:cover;border-radius:12px;margin-bottom:10px"/>
-<div style="display:flex;justify-content:center;align-items:center;gap:15px;flex-wrap:wrap">
-<img src="https://iili.io/CCEYxLX.th.png" alt="CCEYxLX.th.png" border="0">
 
-</div>
+<body>
+
+<div class="app">
+
+<header>
+ RSUD NAIBONAT<br>
+ <span style="font-size:14px;font-weight:400">Survei Kepuasan Masyarakat</span>
+</header>
+
+<main>
+
+<div class="max-w-3xl mx-auto card">
+
+<div class="text-center mb-4">
+<img src="ChatGPT Image Mar 5, 2026, 08_57_39 AM.png"
+ class="w-full max-h-60 object-cover rounded-xl mb-3">
+<img src="https://iili.io/CCEYxLX.th.png" class="mx-auto h-16">
 </div>
 
-<h1 class="text-2xl font-bold mb-4">Survei Kepuasan</h1>
+<h1 class="text-xl font-bold mb-4 text-center">Survei Kepuasan</h1>
+
 <form id="surveyForm">
+
+<!-- STEP 1 -->
 <div id="step1">
 <h2 class="font-bold mb-3">Langkah 1 - Data Responden</h2>
-<input class="border p-2 w-full mb-2" name="nama" placeholder="Nama Lengkap" required=""/>
-<input class="border p-2 w-full mb-2" name="usia" placeholder="Usia" required=""/>
-<select class="border p-2 w-full mb-2" name="jk" required="">
+
+<input class="border p-3 w-full mb-3 rounded-xl" name="nama" placeholder="Nama Lengkap" required>
+<input class="border p-3 w-full mb-3 rounded-xl" name="usia" placeholder="Usia" required>
+
+<select class="border p-3 w-full mb-3 rounded-xl" name="jk" required>
 <option value="">Jenis Kelamin</option>
 <option>Laki-laki</option>
 <option>Perempuan</option>
 </select>
-<input class="border p-2 w-full mb-2" name="rm" placeholder="Nomor RM" required=""/>
-<input class="border p-2 w-full mb-2" name="tanggal" required="" type="date"/>
-<select class="border p-2 w-full mb-2" id="jenisKunjungan" required="">
+
+<input class="border p-3 w-full mb-3 rounded-xl" name="rm" placeholder="Nomor RM" required>
+<input class="border p-3 w-full mb-3 rounded-xl" name="tanggal" type="date" required>
+
+<select class="border p-3 w-full mb-4 rounded-xl" id="jenisKunjungan" required>
 <option value="">Jenis Kunjungan</option>
 <option>Rawat Jalan</option>
 <option>Rawat Inap</option>
 <option>IGD</option>
 </select>
-<button class="bg-green-600 text-white px-4 py-2 rounded" onclick="nextStep()" type="button">Lanjut</button>
+
+<button type="button" onclick="nextStep()" class="bg-green-600 text-white w-full">
+LANJUT
+</button>
 </div>
+
+<!-- STEP 2 -->
 <div id="step2" style="display:none">
 <h2 class="font-bold mb-3">Langkah 2 - Pertanyaan SKM</h2>
 <div id="questions"></div>
-<button class="bg-gray-500 text-white px-4 py-2 rounded" onclick="prevStep()" type="button">Kembali</button>
-<button class="bg-green-600 text-white px-4 py-2 rounded" onclick="nextStep2()" type="button">Lanjut</button>
+
+<div class="flex gap-3 mt-4">
+<button type="button" onclick="prevStep()" class="bg-gray-500 text-white w-1/2">
+KEMBALI
+</button>
+<button type="button" onclick="nextStep2()" class="bg-green-600 text-white w-1/2">
+LANJUT
+</button>
 </div>
+</div>
+
+<!-- STEP 3 -->
 <div id="step3" style="display:none">
 <h2 class="font-bold mb-3">Langkah 3 - Saran</h2>
-<textarea class="border p-2 w-full mb-3" name="saran"></textarea>
-<button class="bg-gray-500 text-white px-4 py-2 rounded" onclick="prevStep2()" type="button">Kembali</button>
-<button class="bg-blue-600 text-white px-4 py-2 rounded" type="submit">Kirim</button>
+
+<textarea class="border p-3 w-full mb-4 rounded-xl" name="saran" rows="4"
+ placeholder="Tulis saran Anda (opsional)"></textarea>
+
+<div class="flex gap-3">
+<button type="button" onclick="prevStep2()" class="bg-gray-500 text-white w-1/2">
+KEMBALI
+</button>
+<button type="submit" class="bg-blue-600 text-white w-1/2">
+KIRIM
+</button>
 </div>
+</div>
+
 </form>
+
 </div>
+</main>
+
+</div>
+
+<!-- SCRIPT ASLI ANDA (TIDAK DIUBAH LOGIKA) -->
 <script>
+/* === SCRIPT ANDA TETAP === */
 const rawatJalan=[
 "Apakah ada kemudahan syarat pelayanan?",
 "Apakah alur pelayanan mudah atau berbelit-belit?",
@@ -82,7 +177,6 @@ function nextStep(){
  step1.style.display='none';
  step2.style.display='block';
 }
-
 function prevStep(){step2.style.display='none';step1.style.display='block';}
 function nextStep2(){step2.style.display='none';step3.style.display='block';}
 function prevStep2(){step3.style.display='none';step2.style.display='block';}
@@ -91,12 +185,12 @@ function buildQuestions(jenis){
  const qs=(jenis==='Rawat Inap')?rawatInap:rawatJalan;
  let html='';
  qs.forEach((q,i)=>{
-   html+=`<div style="margin-bottom:15px">
-   <p><b>${i+1}. ${q}</b></p>
-   <label><input type="radio" name="q${i+1}" value="1" required> 1 Tidak Baik</label><br>
-   <label><input type="radio" name="q${i+1}" value="2"> 2 Kurang Baik</label><br>
-   <label><input type="radio" name="q${i+1}" value="3"> 3 Baik</label><br>
-   <label><input type="radio" name="q${i+1}" value="4"> 4 Sangat Baik</label>
+   html+=`<div class="mb-4">
+   <p class="font-semibold mb-2">${i+1}. ${q}</p>
+   <label><input type="radio" name="q${i+1}" value="1" required> Tidak Baik</label><br>
+   <label><input type="radio" name="q${i+1}" value="2"> Kurang Baik</label><br>
+   <label><input type="radio" name="q${i+1}" value="3"> Baik</label><br>
+   <label><input type="radio" name="q${i+1}" value="4"> Sangat Baik</label>
    </div>`;
  });
  document.getElementById('questions').innerHTML=html;
@@ -148,4 +242,47 @@ document.getElementById('surveyForm').addEventListener('submit', async (e) => {
         console.error(error);
         alert('Koneksi ke server gagal.');
     }
-});</script>
+});</script><script>
+/* =========================
+   HITUNG SKM OTOMATIS
+   ========================= */
+
+function hitungSKM() {
+  let total = 0;
+  let jumlahUnsur = 9;
+
+  for (let i = 1; i <= jumlahUnsur; i++) {
+    const radio = document.querySelector(`input[name="q${i}"]:checked`);
+    if (!radio) {
+      alert("Semua pertanyaan harus dijawab");
+      return null;
+    }
+    total += parseInt(radio.value);
+  }
+
+  const nrr = total / jumlahUnsur;
+  const nilaiSKM = (nrr * 25).toFixed(2);
+
+  return {
+    total,
+    nrr: nrr.toFixed(2),
+    skm: nilaiSKM,
+    kategori: kategoriSKM(nilaiSKM)
+  };
+}
+
+/* =========================
+   KATEGORI SKM
+   ========================= */
+function kategoriSKM(skm) {
+  skm = parseFloat(skm);
+  if (skm >= 88.31) return "A (Sangat Baik)";
+  if (skm >= 76.61) return "B (Baik)";
+  if (skm >= 65.00) return "C (Kurang Baik)";
+  return "D (Tidak Baik)";
+}
+</script>
+</script>
+
+</body>
+</html>
