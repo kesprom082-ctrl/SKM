@@ -1,3 +1,4 @@
+
 <html lang="id">
 <head>
 <meta charset="utf-8">
@@ -217,7 +218,7 @@ document.getElementById('surveyForm').addEventListener('submit', async (e) => {
     try {
 
         const response = await fetch(
-            'https://script.google.com/macros/s/AKfycbzLhyMgGvwhvY-2FxkCw8DQU4pAIXo-yFkpiZ5LxvsfvdD4DQuOe_P0vXeGf3y_xsC9-Q/exec',
+            'https://script.google.com/macros/s/AKfycbxmwAEcaHGriiqDmlSxdwdlBTypdNPl9HRelM7UUs2E-v3WvF7ZcUaPrQbCromidlPSAw/exec',
             {
                 method: 'POST',
                 headers: {
@@ -242,46 +243,3 @@ document.getElementById('surveyForm').addEventListener('submit', async (e) => {
         alert('Koneksi ke server gagal.');
     }
 });</script><script>
-/* =========================
-   HITUNG SKM OTOMATIS
-   ========================= */
-
-function hitungSKM() {
-  let total = 0;
-  let jumlahUnsur = 9;
-
-  for (let i = 1; i <= jumlahUnsur; i++) {
-    const radio = document.querySelector(`input[name="q${i}"]:checked`);
-    if (!radio) {
-      alert("Semua pertanyaan harus dijawab");
-      return null;
-    }
-    total += parseInt(radio.value);
-  }
-
-  const nrr = total / jumlahUnsur;
-  const nilaiSKM = (nrr * 25).toFixed(2);
-
-  return {
-    total,
-    nrr: nrr.toFixed(2),
-    skm: nilaiSKM,
-    kategori: kategoriSKM(nilaiSKM)
-  };
-}
-
-/* =========================
-   KATEGORI SKM
-   ========================= */
-function kategoriSKM(skm) {
-  skm = parseFloat(skm);
-  if (skm >= 88.31) return "A (Sangat Baik)";
-  if (skm >= 76.61) return "B (Baik)";
-  if (skm >= 65.00) return "C (Kurang Baik)";
-  return "D (Tidak Baik)";
-}
-</script>
-</script>
-
-</body>
-</html>
