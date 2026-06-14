@@ -217,7 +217,7 @@ document.getElementById('surveyForm').addEventListener('submit', async (e) => {
     try {
 
         const response = await fetch(
-            'https://script.google.com/macros/s/AKfycbxmwAEcaHGriiqDmlSxdwdlBTypdNPl9HRelM7UUs2E-v3WvF7ZcUaPrQbCromidlPSAw/exec',
+            'https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnSW-WbXfoI4i2GQBrP_yOrzbb-eoPlAY38LJkUNX2lg4u2gsxtWTgMOOU4adH8WlNcLiek-GG1wtr_QDedfaqisG5IGQmqaqlp60eivrCBc-yzERVSn_B1TwA5_PtckBZLduU9xpO8i3conk96hlbyquwJxHudSeSSUEb3K_gc3xOBSrQvSZdzsbjqeJJ5xifjrbGoOLkdOnnoBiwD2cohSrBssNyzQku1wk80p5mAclaBcKFm-qkFrII0q_fVpYftXm2jAxkTn2zVSjh-KJmehjv34Bw&lib=MAahHAAmPgi2zfjJ_y1zeLn8msdDNCp5k',
             {
                 method: 'POST',
                 headers: {
