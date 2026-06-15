@@ -1,4 +1,3 @@
-
 <html lang="id">
 <head>
 <meta charset="utf-8">
@@ -89,7 +88,31 @@ button{
 <option>Perempuan</option>
 </select>
 
-<input class="border p-3 w-full mb-3 rounded-xl" name="rm" placeholder="Nomor RM" required>
+<div class="flex gap-3 mb-3">
+
+    <div class="flex-1">
+        <label class="block text-sm mb-1 font-medium">
+            Nomor RM
+        </label>
+        <input
+            class="border p-3 w-full rounded-xl"
+            name="rm"
+            placeholder="Nomor RM/bpjs/nik"
+            required>
+    </div>
+
+    <div style="width:170px">
+        <label class="block text-sm mb-1 font-medium">
+            Kunjungan Terakhir
+        </label>
+        <input
+            class="border p-3 w-full rounded-xl"
+            name="tanggalKunjunganTerakhir"
+            type="date">
+    </div>
+
+</div>
+
 <input class="border p-3 w-full mb-3 rounded-xl" name="tanggal" type="date" required>
 
 <select class="border p-3 w-full mb-4 rounded-xl" id="jenisKunjungan" required>
