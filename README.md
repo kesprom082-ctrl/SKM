@@ -170,14 +170,77 @@ const rawatInap=[
 ];
 
 function nextStep(){
- const jenis=document.getElementById('jenisKunjungan').value;
- if(!jenis){alert('Pilih jenis kunjungan');return;}
- buildQuestions(jenis);
- step1.style.display='none';
- step2.style.display='block';
+
+    const form = document.getElementById('surveyForm');
+
+    if(!form.nama.value.trim()){
+        alert('Nama Lengkap belum diisi!');
+        form.nama.focus();
+        return;
+    }
+
+    if(!form.usia.value.trim()){
+        alert('Usia belum diisi!');
+        form.usia.focus();
+        return;
+    }
+
+    if(!form.jk.value){
+        alert('Jenis Kelamin belum dipilih!');
+        form.jk.focus();
+        return;
+    }
+
+    if(!form.rm.value.trim()){
+        alert('Nomor RM belum diisi!');
+        form.rm.focus();
+        return;
+    }
+
+    if(!form.tanggal.value){
+        alert('Tanggal belum dipilih!');
+        form.tanggal.focus();
+        return;
+    }
+
+    const jenis = document.getElementById('jenisKunjungan').value;
+
+    if(!jenis){
+        alert('Jenis Kunjungan belum dipilih!');
+        document.getElementById('jenisKunjungan').focus();
+        return;
+    }
+
+    buildQuestions(jenis);
+    step1.style.display='none';
+    step2.style.display='block';
 }
 function prevStep(){step2.style.display='none';step1.style.display='block';}
-function nextStep2(){step2.style.display='none';step3.style.display='block';}
+function nextStep2(){
+
+    const jenis = document.getElementById('jenisKunjungan').value;
+    const qs = (jenis === 'Rawat Inap') ? rawatInap : rawatJalan;
+
+    for(let i=1; i<=qs.length; i++){
+
+        const jawaban = document.querySelector(`input[name="q${i}"]:checked`);
+
+        if(!jawaban){
+
+            alert('Pertanyaan nomor ' + i + ' belum dijawab!');
+
+            document.querySelector(`input[name="q${i}"]`).scrollIntoView({
+                behavior:'smooth',
+                block:'center'
+            });
+
+            return;
+        }
+    }
+
+    step2.style.display='none';
+    step3.style.display='block';
+}
 function prevStep2(){step3.style.display='none';step2.style.display='block';}
 
 function buildQuestions(jenis){
