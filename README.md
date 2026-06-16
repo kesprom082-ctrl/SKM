@@ -94,7 +94,7 @@ button{
     class="border p-3 w-full rounded-xl"
     name="rm"
     placeholder="Nomor RM"
-    maxlength="14"
+    maxlength="20"
     required>
 
     <div style="width:170px">
