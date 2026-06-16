@@ -90,16 +90,12 @@ button{
 
 <div class="flex gap-3 mb-3">
 
-    <div class="flex-1">
-        <label class="block text-sm mb-1 font-medium">
-            Nomor RM
-        </label>
-        <input
-            class="border p-3 w-full rounded-xl"
-            name="rm"
-            placeholder="Nomor RM/bpjs/nik"
-            required>
-    </div>
+    <input
+    class="border p-3 w-full rounded-xl"
+    name="rm"
+    placeholder="Nomor RM"
+    maxlength="14"
+    required>
 
     <div style="width:170px">
         <label class="block text-sm mb-1 font-medium">
@@ -108,11 +104,11 @@ button{
         <input
             class="border p-3 w-full rounded-xl"
             name="tanggalKunjunganTerakhir"
-            type="date">
+            type="month">
     </div>
 
 </div>
-
+Kunjungan Saat ini
 <input class="border p-3 w-full mb-3 rounded-xl" name="tanggal" type="date" required>
 
 <select class="border p-3 w-full mb-4 rounded-xl" id="jenisKunjungan" required>
