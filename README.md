@@ -1,3 +1,4 @@
+
 <html lang="id">
 <head>
 <meta charset="utf-8">
@@ -111,12 +112,34 @@ button{
 Kunjungan Saat ini
 <input class="border p-3 w-full mb-3 rounded-xl" name="tanggal" type="date" required>
 
-<select class="border p-3 w-full mb-4 rounded-xl" id="jenisKunjungan" required>
+<select class="border p-3 w-full mb-3 rounded-xl" id="jenisKunjungan" onchange="togglePoli()" required>
 <option value="">Jenis Kunjungan</option>
 <option>Rawat Jalan</option>
 <option>Rawat Inap</option>
 <option>IGD</option>
 </select>
+
+<div id="poliContainer" style="display:none">
+<select class="border p-3 w-full mb-4 rounded-xl" id="jenisPoli">
+<option value="">Pilih Poli / Unit</option>
+<option>Poli Penyakit Dalam</option>
+<option>Poli Anak</option>
+<option>Poli Bedah</option>
+<option>Poli Kebidanan & Kandungan</option>
+<option>Poli Gigi</option>
+<option>Poli Saraf</option>
+<option>Poli Mata</option>
+<option>Poli THT</option>
+<option>Poli Jantung</option>
+<option>Poli Paru</option>
+<option>Poli Kulit & Kelamin</option>
+<option>Poli Rehabilitasi Medik</option>
+<option>Poli Jiwa</option>
+<option>Laboratorium</option>
+<option>Radiologi</option>
+<option>Farmasi</option>
+</select>
+</div>
 
 <button type="button" onclick="nextStep()" class="bg-green-600 text-white w-full">
 LANJUT
@@ -231,7 +254,15 @@ function nextStep(){
         return;
     }
 
-    buildQuestions(jenis);
+    if(jenis === 'Rawat Jalan'){
+    const poli = document.getElementById('jenisPoli').value;
+    if(!poli){
+        alert('Silakan pilih Poli / Unit yang dikunjungi!');
+        document.getElementById('jenisPoli').focus();
+        return;
+    }
+}
+buildQuestions(jenis);
     step1.style.display='none';
     step2.style.display='block';
 }
@@ -261,6 +292,13 @@ function nextStep2(){
     step2.style.display='none';
     step3.style.display='block';
 }
+
+function togglePoli(){
+    const jenis = document.getElementById('jenisKunjungan').value;
+    const poli = document.getElementById('poliContainer');
+    poli.style.display = (jenis === 'Rawat Jalan') ? 'block' : 'none';
+}
+
 function prevStep2(){step3.style.display='none';step2.style.display='block';}
 
 function buildQuestions(jenis){
@@ -289,6 +327,7 @@ document.getElementById('surveyForm').addEventListener('submit', async (e) => {
         rm: form.rm.value,
         tanggal: form.tanggal.value,
         jenisKunjungan: document.getElementById('jenisKunjungan').value,
+        jenisPoli: document.getElementById('jenisPoli')?.value || '',
         saran: form.saran.value,
         jawaban: []
     };
@@ -300,7 +339,7 @@ document.getElementById('surveyForm').addEventListener('submit', async (e) => {
     try {
 
         const response = await fetch(
-            'https://script.google.com/macros/s/AKfycbxmwAEcaHGriiqDmlSxdwdlBTypdNPl9HRelM7UUs2E-v3WvF7ZcUaPrQbCromidlPSAw/exec',
+            'https://script.google.com/macros/s/AKfycbx63xbabooazeRlIAPekHN4k9lihjhHxD-l646TZty3I3xViUPFcR_MXhZfvuGiMwmsxw/exec',
             {
                 method: 'POST',
                 headers: {
